@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMTELE-WEB</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- INICIO DE SESIÓN -->
+    <section id="pantallaLogin" class="login-contenedor">
+
+        <div class="login-caja">
+            <h1>SIMTELE-WEB</h1>
+            <p>Panel de prevención y monitoreo</p>
+
+            <form id="formLogin">
+
+                <label for="usuario">Usuario:</label>
+                <input type="text" id="usuario" placeholder="Ingrese su usuario" required>
+
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" placeholder="Ingrese su contraseña" required>
+
+                <button type="submit">Iniciar sesión</button>
+
+                <p id="mensajeLogin"></p>
+            </form>
+
+            <small>Usuario de prueba: admin | Contraseña: 1234</small>
+        </div>
+
+    </section>
+
+
+    <!-- PANEL PRINCIPAL -->
+    <div id="panelPrincipal" hidden>
+
+        <header>
+            <h1>SIMTELE-WEB</h1>
+            <p>Sistema de prevención y monitoreo de Mi Teleférico</p>
+
+            <p>Bienvenido: <strong id="nombreUsuario"></strong></p>
+
+            <button id="btnCerrarSesion" class="btn-salir">
+                Cerrar sesión
+            </button>
+        </header>
+
+
+        <!-- MENÚ DE NAVEGACIÓN -->
+        <nav>
+            <a href="#modulo1">Emergencia</a>
+            <a href="#modulo2">Mantenimiento</a>
+            <a href="#modulo3">Viento</a>
+            <a href="#modulo4">Sensores</a>
+        </nav>
+
+
+        <main>
+
+            <!-- MÓDULO 1: DETENCIÓN DE EMERGENCIA -->
+            <section id="modulo1" class="modulo">
+
+                <h2>1. Detención de emergencia</h2>
+
+                <p>
+                    Calcula la distancia recorrida durante el tiempo de reacción.
+                </p>
+
+                <form id="formEmergencia">
+
+                    <label for="velocidad">Velocidad (km/h):</label>
+                    <input type="number" id="velocidad" min="0" step="any" required>
+
+                    <label for="tiempo">Tiempo de reacción (segundos):</label>
+                    <input type="number" id="tiempo" min="0" step="any" required>
+
+                    <button type="submit">Calcular distancia</button>
+
+                </form>
+
+                <div id="resultadoEmergencia" class="resultado"></div>
+
+                <p class="nota">
+                    Los umbrales de clasificación son simulados con fines educativos.
+                </p>
+
+            </section>
+
+
+            <!-- MÓDULO 2: MANTENIMIENTO -->
+            <section id="modulo2" class="modulo">
+
+                <h2>2. Registro de mantenimiento</h2>
+
+                <p>Registra los componentes y su estado de mantenimiento.</p>
+
+                <form id="formMantenimiento">
+
+                    <label for="componente">Nombre del componente:</label>
+                    <input type="text" id="componente" placeholder="Ej. Motor" required>
+
+                    <label for="horas">Horas de uso:</label>
+                    <input type="number" id="horas" min="0" step="any" required>
+
+                    <label for="estado">Estado:</label>
+                    <select id="estado" required>
+                        <option value="">Seleccione un estado</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Revisión">Revisión</option>
+                        <option value="Urgente">Urgente</option>
+                    </select>
+
+                    <button type="submit">Agregar registro</button>
+
+                </form>
+
+                <p id="mensajeMantenimiento"></p>
+
+                <h3>Lista de mantenimientos</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Horas</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaMantenimiento"></tbody>
+                </table>
+
+            </section>
+
+
+            <!-- MÓDULO 3: VIENTO Y OSCILACIÓN -->
+            <section id="modulo3" class="modulo">
+
+                <h2>3. Viento y oscilación</h2>
+
+                <p>Ingresa cinco mediciones simuladas de viento.</p>
+
+                <form id="formViento">
+
+                    <label for="viento1">Medición 1:</label>
+                    <input type="number" id="viento1" min="0" step="any" required>
+
+                    <label for="viento2">Medición 2:</label>
+                    <input type="number" id="viento2" min="0" step="any" required>
+
+                    <label for="viento3">Medición 3:</label>
+                    <input type="number" id="viento3" min="0" step="any" required>
+
+                    <label for="viento4">Medición 4:</label>
+                    <input type="number" id="viento4" min="0" step="any" required>
+
+                    <label for="viento5">Medición 5:</label>
+                    <input type="number" id="viento5" min="0" step="any" required>
+
+                    <button type="submit">Calcular mediciones</button>
+
+                </form>
+
+                <div id="resultadoViento" class="resultado"></div>
+
+                <p class="nota">
+                    Las mediciones y clasificaciones son simuladas.
+                </p>
+
+            </section>
+
+
+            <!-- MÓDULO 4: SENSORES -->
+            <section id="modulo4" class="modulo">
+
+                <h2>4. Validación de sensores</h2>
+
+                <p>Registra sensores y valida su código.</p>
+
+                <form id="formSensores">
+
+                    <label for="codigoSensor">Código del sensor:</label>
+                    <input type="text" id="codigoSensor" placeholder="Ej. SEN-001">
+
+                    <label for="tipoSensor">Tipo de sensor:</label>
+                    <input type="text" id="tipoSensor" placeholder="Ej. Temperatura">
+
+                    <label for="lecturaSensor">Lectura:</label>
+                    <input type="number" id="lecturaSensor" step="any">
+
+                    <button type="submit">Validar y registrar</button>
+
+                </form>
+
+                <p id="mensajeSensor"></p>
+
+                <h3>Sensores registrados</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Tipo</th>
+                            <th>Lectura</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tablaSensores"></tbody>
+                </table>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+            <p>SIMTELE-WEB - Proyecto académico de Programación Web I</p>
+        </footer>
+
+    </div>
+
+
+    <!-- UN SOLO ARCHIVO JAVASCRIPT -->
+    <script src="javascript.js"></script>
+
+</body>
+</html>
